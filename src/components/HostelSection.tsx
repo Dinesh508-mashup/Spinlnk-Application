@@ -1,12 +1,82 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import type { HostelData } from '../types';
+
 
 const hostels: HostelData[] = [
   { name: 'The Nest Hostel', owner: 'Ravi Shankar', area: 'Banjara Hills', city: 'Hyderabad', machines: 2, contact: '+91 98490 12345', lat: 17.4126, lng: 78.4482 },
   { name: 'Bunk & Beyond', owner: 'Priya Nair', area: 'Madhapur', city: 'Hyderabad', machines: 3, contact: '+91 99000 56789', lat: 17.4474, lng: 78.3915 },
   { name: 'Studio Stay HYD', owner: 'Arjun Reddy', area: 'Kondapur', city: 'Hyderabad', machines: 2, contact: '+91 91234 00000', lat: 17.4720, lng: 78.3639 },
 ];
+
+const CIRCLE_SIZE = 120;
+const STROKE_WIDTH = 6;
+const RADIUS = (CIRCLE_SIZE - STROKE_WIDTH) / 2;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+const CircleCounter: React.FC<{ value: number; max: number; label: string; suffix?: string; progress: number }> = ({ value, label, suffix, progress }) => {
+  const offset = CIRCUMFERENCE - progress * CIRCUMFERENCE;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+      <div style={{ position: 'relative', width: CIRCLE_SIZE, height: CIRCLE_SIZE }}>
+        <svg width={CIRCLE_SIZE} height={CIRCLE_SIZE} style={{ transform: 'rotate(-90deg)' }}>
+          <circle cx={CIRCLE_SIZE / 2} cy={CIRCLE_SIZE / 2} r={RADIUS}
+            fill="none" stroke="#e8ecf1" strokeWidth={STROKE_WIDTH} />
+          <circle cx={CIRCLE_SIZE / 2} cy={CIRCLE_SIZE / 2} r={RADIUS}
+            fill="none" stroke="#3cc1a2" strokeWidth={STROKE_WIDTH}
+            strokeDasharray={CIRCUMFERENCE} strokeDashoffset={offset}
+            strokeLinecap="round"
+            style={{ transition: 'stroke-dashoffset 0.05s linear' }} />
+        </svg>
+        <div style={{
+          position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: "'Courier New', monospace", fontWeight: 800, fontSize: 38, color: 'var(--blue)', letterSpacing: 2
+        }}>
+          {value}{suffix && <span style={{ fontSize: 20 }}>{suffix}</span>}
+        </div>
+      </div>
+      <div style={{
+        fontFamily: "'Raleway', sans-serif", fontSize: 12, fontWeight: 700,
+        color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: 1.5
+      }}>{label}</div>
+    </div>
+  );
+};
+
+const CounterStrip: React.FC = () => {
+  const [progress, setProgress] = useState(0);
+  const stripRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = stripRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        const start = performance.now();
+        const animate = (now: number) => {
+          const p = Math.min((now - start) / 2000, 1);
+          setProgress(p);
+          if (p < 1) requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+        observer.unobserve(el);
+      }
+    }, { threshold: 0.3 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={stripRef} className="counter-strip" style={{
+      display: 'inline-flex', gap: 48, marginTop: 30, justifyContent: 'center', flexWrap: 'wrap'
+    }}>
+      <CircleCounter value={Math.floor(progress * 3)} max={3} label="Hostels" progress={progress} />
+      <CircleCounter value={Math.floor(progress * 7)} max={7} label="Laundry Services" progress={progress} />
+      <CircleCounter value={1} max={1} label="Avg Setup Time" suffix="m" progress={progress} />
+    </div>
+  );
+};
 
 const HostelSection: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -69,13 +139,8 @@ const HostelSection: React.FC = () => {
       <div style={{ textAlign: 'center', maxWidth: 650, margin: '0 auto 50px' }}>
         <div className="sec-label">/ Coverage</div>
         <h2 className="sec-title">Hostels on <em>our network</em></h2>
-        <div style={{
-          display: 'inline-block', background: '#2f80ed', color: '#fff',
-          padding: '8px 18px', borderRadius: 6, fontWeight: 600, margin: '15px 0'
-        }}>
-          📍 3 Hostels in Hyderabad
-        </div>
         <p className="sec-text">Integrated hostels — Book a stay at a SpinLnk hostel</p>
+        <CounterStrip />
       </div>
 
       <div style={{ maxWidth: 1200, margin: 'auto', borderRadius: 12, overflow: 'hidden', boxShadow: '0 8px 30px rgba(0,0,0,0.1)' }}>
