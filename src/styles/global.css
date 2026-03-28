@@ -63,6 +63,9 @@ nav.nav-hidden{transform:translateY(-100%);}
   nav{height:60px;padding:0 16px;}
   nav .logo img{height:100px !important;}
 
+  /* HERO OVERLAY - hide Group2.png on mobile */
+  .hero-overlay{display:none !important;}
+
   /* SECTIONS PADDING */
   section{padding-left:20px !important;padding-right:20px !important;}
 

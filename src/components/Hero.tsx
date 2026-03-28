@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
       >
         <source src="./videos/washing machine.mp4" type="video/mp4" />
       </video>
-      <div style={{
+      <div className="hero-overlay" style={{
         position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
         backgroundImage: "url('./images/Group2.png')",
         backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%', backgroundPosition: 'center',

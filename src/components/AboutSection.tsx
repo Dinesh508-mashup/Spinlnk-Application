@@ -161,7 +161,34 @@ const AboutSection: React.FC = () => {
                 <p style={{ color: '#888', fontSize: 13, marginBottom: 24 }}>Tell us about your hostel</p>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   <input name="hostelName" value={form.hostelName} onChange={handleChange} placeholder="Hostel Name" required style={inputStyle} />
-                  <input name="location" value={form.location} onChange={handleChange} placeholder="Location" required style={inputStyle} />
+                  <select name="location" value={form.location} onChange={handleChange as unknown as React.ChangeEventHandler<HTMLSelectElement>} required style={{ ...inputStyle, color: form.location ? '#333' : '#999', appearance: 'none', backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\' viewBox=\'0 0 12 8\'%3E%3Cpath d=\'M1 1l5 5 5-5\' stroke=\'%23999\' stroke-width=\'1.5\' fill=\'none\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}>
+                    <option value="" disabled>Select City</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Indore">Indore</option>
+                    <option value="Kochi">Kochi</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Visakhapatnam">Visakhapatnam</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Bhopal">Bhopal</option>
+                    <option value="Mysore">Mysore</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Dehradun">Dehradun</option>
+                    <option value="Varanasi">Varanasi</option>
+                    <option value="Mangalore">Mangalore</option>
+                    <option value="Vijayawada">Vijayawada</option>
+                    <option value="Tirupati">Tirupati</option>
+                    <option value="Other">Other</option>
+                  </select>
                   <input name="rooms" value={form.rooms} onChange={handleChange} placeholder="No. of Rooms" type="number" required style={inputStyle} />
                   <input name="contact" value={form.contact} onChange={handleChange} placeholder="Contact Number" type="tel" required style={inputStyle} />
                   <input name="ownerName" value={form.ownerName} onChange={handleChange} placeholder="Owner Name" required style={inputStyle} />
