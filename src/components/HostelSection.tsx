@@ -4,10 +4,13 @@ import type { HostelData } from '../types';
 
 
 const hostels: HostelData[] = [
-  { name: 'The Nest Hostel', owner: 'Ravi Shankar', area: 'Banjara Hills', city: 'Hyderabad', machines: 2, contact: '+91 98490 12345', lat: 17.4126, lng: 78.4482 },
-  { name: 'Bunk & Beyond', owner: 'Priya Nair', area: 'Madhapur', city: 'Hyderabad', machines: 3, contact: '+91 99000 56789', lat: 17.4474, lng: 78.3915 },
-  { name: 'Studio Stay HYD', owner: 'Arjun Reddy', area: 'Kondapur', city: 'Hyderabad', machines: 2, contact: '+91 91234 00000', lat: 17.4720, lng: 78.3639 },
+  { name: 'The Nest Hostel', owner: 'Ravi Shankar', area: 'Banjara Hills', city: 'Hyderabad', machines: 2, rooms: 40, contact: '+91 98490 12345', lat: 17.4126, lng: 78.4482 },
+  { name: 'Bunk & Beyond', owner: 'Priya Nair', area: 'Madhapur', city: 'Hyderabad', machines: 3, rooms: 45, contact: '+91 99000 56789', lat: 17.4474, lng: 78.3915 },
+  { name: 'Studio Stay HYD', owner: 'Arjun Reddy', area: 'Kondapur', city: 'Hyderabad', machines: 2, rooms: 35, contact: '+91 91234 00000', lat: 17.4720, lng: 78.3639 },
 ];
+
+const totalMachines = hostels.reduce((sum, h) => sum + h.machines, 0);
+const totalRoomsStickered = hostels.reduce((sum, h) => sum + h.rooms, 0);
 
 const CIRCLE_SIZE = 120;
 const STROKE_WIDTH = 6;
@@ -31,13 +34,13 @@ const CircleCounter: React.FC<{ value: number; max: number; label: string; suffi
         </svg>
         <div style={{
           position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: "'Courier New', monospace", fontWeight: 800, fontSize: 38, color: 'var(--blue)', letterSpacing: 2
+          fontFamily: "'Satoshi', sans-serif", fontWeight: 800, fontSize: 38, color: 'var(--blue)', letterSpacing: 2
         }}>
           {value}{suffix && <span style={{ fontSize: 20 }}>{suffix}</span>}
         </div>
       </div>
       <div style={{
-        fontFamily: "'Raleway', sans-serif", fontSize: 12, fontWeight: 700,
+        fontFamily: "'General Sans', sans-serif", fontSize: 12, fontWeight: 700,
         color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: 1.5
       }}>{label}</div>
     </div>
@@ -69,10 +72,11 @@ const CounterStrip: React.FC = () => {
 
   return (
     <div ref={stripRef} className="counter-strip" style={{
-      display: 'inline-flex', gap: 48, marginTop: 30, justifyContent: 'center', flexWrap: 'wrap'
+      display: 'flex', gap: 48, marginTop: 30, justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap', width: '100%', maxWidth: 900, margin: '30px auto 0'
     }}>
       <CircleCounter value={Math.floor(progress * 3)} max={3} label="Hostels" progress={progress} />
-      <CircleCounter value={Math.floor(progress * 7)} max={7} label="Laundry Services" progress={progress} />
+      <CircleCounter value={Math.floor(progress * totalMachines)} max={totalMachines} label="Washing Machines Integrated" progress={progress} />
+      <CircleCounter value={Math.floor(progress * totalRoomsStickered)} max={totalRoomsStickered} label="Hostel Rooms Stickered" progress={progress} />
       <CircleCounter value={1} max={1} label="Avg Setup Time" suffix="m" progress={progress} />
     </div>
   );
@@ -115,11 +119,11 @@ const HostelSection: React.FC = () => {
     hostels.forEach((h) => {
       const marker = L.marker([h.lat, h.lng], { icon: customIcon }).addTo(map);
       marker.bindTooltip(
-        `<div style="font-family:'Raleway',sans-serif;font-weight:700;font-size:12px;color:#1a3c5e;white-space:nowrap;">Spinlnk</div>`,
+        `<div style="font-family:'General Sans',sans-serif;font-weight:700;font-size:12px;color:#1a3c5e;white-space:nowrap;">Spinlnk</div>`,
         { permanent: true, direction: 'top', offset: [0, -44], className: 'spinlnk-label' }
       ).openTooltip();
       marker.bindPopup(
-        `<div style="font-family:'Raleway',sans-serif;text-align:center;">
+        `<div style="font-family:'General Sans',sans-serif;text-align:center;">
           <div style="font-weight:800;font-size:14px;color:#e53935;margin-bottom:4px;">Spinlnk</div>
           <div style="font-size:12px;color:#1a3c5e;">${h.name} — ${h.area}</div>
         </div>`,

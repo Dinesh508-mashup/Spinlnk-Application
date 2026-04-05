@@ -48,10 +48,10 @@ const Modal: React.FC<ModalProps> = ({ data, onClose }) => {
           onClick={onClose}
           style={{ position: 'absolute', top: 18, right: 22, background: 'none', border: 'none', fontSize: 22, color: '#aaa', cursor: 'pointer', lineHeight: 1 }}
         >×</button>
-        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 700, color: '#1a2744', marginBottom: 4 }}>
+        <div style={{ fontFamily: "'Satoshi', sans-serif", fontSize: 28, fontWeight: 700, color: '#1a2744', marginBottom: 4 }}>
           Enquire &amp; Book
         </div>
-        <div style={{ color: '#e74c3c', fontFamily: "'Raleway', sans-serif", fontWeight: 600, fontSize: 15, marginBottom: 28 }}>
+        <div style={{ color: '#e74c3c', fontFamily: "'General Sans', sans-serif", fontWeight: 600, fontSize: 15, marginBottom: 28 }}>
           {data.name}
         </div>
         {infoRows.map((row, i) => (
@@ -61,8 +61,8 @@ const Modal: React.FC<ModalProps> = ({ data, onClose }) => {
           }}>
             <span style={{ fontSize: 22, flexShrink: 0 }}>{row.icon}</span>
             <div>
-              <div style={{ fontFamily: "'Raleway', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: '#999', marginBottom: 2 }}>{row.label}</div>
-              <div style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 15, color: '#1a2744' }}>{row.value}</div>
+              <div style={{ fontFamily: "'General Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: '#999', marginBottom: 2 }}>{row.label}</div>
+              <div style={{ fontFamily: "'General Sans', sans-serif", fontWeight: 700, fontSize: 15, color: '#1a2744' }}>{row.value}</div>
             </div>
           </div>
         ))}
@@ -71,7 +71,7 @@ const Modal: React.FC<ModalProps> = ({ data, onClose }) => {
             onClick={() => window.location.href = `tel:+${rawNum}`}
             style={{
               flex: 1, padding: 16, background: '#1a2744', color: '#fff', border: 'none',
-              borderRadius: 50, fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 15, cursor: 'pointer'
+              borderRadius: 50, fontFamily: "'General Sans', sans-serif", fontWeight: 700, fontSize: 15, cursor: 'pointer'
             }}
           >📞 Call Now</button>
           <a
@@ -80,7 +80,7 @@ const Modal: React.FC<ModalProps> = ({ data, onClose }) => {
             rel="noreferrer"
             style={{
               flex: 1, padding: 16, background: '#25d366', color: '#fff', border: 'none',
-              borderRadius: 50, fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 15,
+              borderRadius: 50, fontFamily: "'General Sans', sans-serif", fontWeight: 700, fontSize: 15,
               cursor: 'pointer', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
             }}
           >💬 WhatsApp</a>

@@ -20,7 +20,7 @@ const SliderSection: React.FC = () => {
 
       <div style={{ position: 'relative', zIndex: 10, margin: '0 auto', textAlign: 'center', padding: '0 20px' }}>
         <h1 className="slider-title" style={{
-          fontFamily: "'Raleway', sans-serif", fontSize: 'clamp(36px, 5vw, 64px)',
+          fontFamily: "'Satoshi', sans-serif", fontSize: 'clamp(36px, 5vw, 64px)',
           fontWeight: 800, lineHeight: 1.1, color: '#1a1a2e', marginBottom: 16, letterSpacing: -0.5, whiteSpace: 'nowrap'
         }}>
           Your laundry, <span style={{ color: 'var(--teal)' }}>finally sorted.</span>

@@ -32,7 +32,7 @@ const FeatureCard: React.FC<typeof features[0]> = ({ icon, title, text, delay })
       onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; }}
     >
       <span style={{ fontSize: 44, marginBottom: 20, display: 'block' }}>{icon}</span>
-      <div style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 17, color: 'var(--blue)', marginBottom: 10 }}>{title}</div>
+      <div style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 700, fontSize: 17, color: 'var(--blue)', marginBottom: 10 }}>{title}</div>
       <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.8 }}>{text}</p>
     </div>
   );
@@ -52,7 +52,7 @@ const FeaturesSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="features" style={{ background: 'var(--light)', padding: '90px 60px' }}>
+    <section id="features" style={{ background: 'var(--light)', padding: '90px 40px' }}>
       <div ref={headerRef} className="reveal" style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 60px' }}>
         <div className="sec-label">/ How It Works</div>
         <div className="sec-eyebrow">We think ahead</div>

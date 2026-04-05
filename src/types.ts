@@ -4,6 +4,7 @@ export interface HostelData {
   area: string;
   city: string;
   machines: number;
+  rooms: number;
   contact: string;
   lat: number;
   lng: number;

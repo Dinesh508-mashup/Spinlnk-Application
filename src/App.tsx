@@ -8,6 +8,7 @@ import FeaturesSection from './components/FeaturesSection';
 import PainPointsSection from './components/PainPointsSection';
 import HostelSection from './components/HostelSection';
 import Footer from './components/Footer';
+import './styles/global.css';
 
 const App: React.FC = () => {
   const [introDone, setIntroDone] = useState(false);

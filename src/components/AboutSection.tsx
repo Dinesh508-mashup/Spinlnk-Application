@@ -9,7 +9,7 @@ const checkItems = [
 
 const inputStyle: React.CSSProperties = {
   width: '100%', padding: '12px 16px', border: '1.5px solid #dde4ee',
-  borderRadius: 8, fontSize: 14, fontFamily: "'Raleway', sans-serif",
+  borderRadius: 8, fontSize: 14, fontFamily: "'General Sans', sans-serif",
   outline: 'none', transition: 'border-color .2s',
 };
 
@@ -32,34 +32,17 @@ const AboutSection: React.FC = () => {
     <section id="about" style={{ background: '#fff', overflow: 'hidden' }}>
       {/* Image area with decorative elements */}
       <div style={{ position: 'relative', maxWidth: 950, margin: '0 auto', padding: '80px 40px 50px' }}>
-        <div className="about-decorative" style={{
-          position: 'absolute', top: 55, left: 80, width: 12, height: 12,
-          borderRadius: '50%', background: 'var(--blue)', zIndex: 2
-        }} />
-        <div className="about-decorative" style={{
-          position: 'absolute', top: 30, left: 40, width: 180, height: 180,
-          border: '2px solid #e07040', borderRadius: '50%',
-          borderRightColor: 'transparent', borderBottomColor: 'transparent',
-          transform: 'rotate(-30deg)', zIndex: 2
-        }} />
-        <div className="about-decorative" style={{
-          position: 'absolute', top: 30, right: 20, width: 220, height: 220,
-          border: '2px solid var(--blue)', borderRadius: '50%',
-          borderLeftColor: 'transparent', borderTopColor: 'transparent',
-          transform: 'rotate(-30deg)', zIndex: 2
-        }} />
-        <div className="about-decorative" style={{
-          position: 'absolute', bottom: 50, right: 60, width: 12, height: 12,
-          borderRadius: '50%', background: '#e07040', zIndex: 2
-        }} />
         <div style={{
           width: '100%', margin: '0 auto',
           borderRadius: '200px / 160px', overflow: 'hidden',
           boxShadow: '0 12px 40px rgba(0,0,0,0.12)', position: 'relative', zIndex: 1
         }}>
-          <img
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&auto=format"
-            alt="Laundry room"
+          <video
+            src="/videos/spinlnk-hostel-demo.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="about-image"
             style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }}
           />
@@ -69,11 +52,11 @@ const AboutSection: React.FC = () => {
       {/* Heading */}
       <div className="about-heading" style={{ background: '#fff', padding: '44px 40px', textAlign: 'center' }}>
         <div style={{
-          fontFamily: "'Raleway', sans-serif", fontSize: 11, letterSpacing: 3,
+          fontFamily: "'General Sans', sans-serif", fontSize: 11, letterSpacing: 3,
           textTransform: 'uppercase', color: 'var(--teal)', fontWeight: 700, marginBottom: 10
         }}>/ About Me</div>
         <h2 style={{
-          fontFamily: "'Playfair Display', serif", fontWeight: 700,
+          fontFamily: "'Satoshi', sans-serif", fontWeight: 700,
           fontSize: 'clamp(32px, 5vw, 52px)', lineHeight: 1.15, color: 'var(--blue)', margin: 0
         }}>
           Why choose <span style={{ color: 'var(--teal)', fontStyle: 'italic' }}>SpinLnk?</span>
@@ -112,7 +95,7 @@ const AboutSection: React.FC = () => {
             onClick={() => setShowForm(true)}
             style={{
               padding: '12px 30px', background: 'var(--teal)', color: '#fff',
-              border: 'none', borderRadius: 4, fontFamily: "'Raleway', sans-serif",
+              border: 'none', borderRadius: 4, fontFamily: "'General Sans', sans-serif",
               fontWeight: 700, fontSize: 13, letterSpacing: .5, cursor: 'pointer',
               transition: 'background .25s'
             }}
@@ -148,14 +131,14 @@ const AboutSection: React.FC = () => {
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }}>
                 <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
-                <div style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 20, color: 'var(--blue)' }}>
+                <div style={{ fontFamily: "'General Sans', sans-serif", fontWeight: 700, fontSize: 20, color: 'var(--blue)' }}>
                   Thank you!
                 </div>
                 <p style={{ color: '#777', fontSize: 14, marginTop: 8 }}>We'll get back to you soon.</p>
               </div>
             ) : (
               <>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 24, fontWeight: 700, color: 'var(--blue)', marginBottom: 4 }}>
+                <div style={{ fontFamily: "'Satoshi', sans-serif", fontSize: 24, fontWeight: 700, color: 'var(--blue)', marginBottom: 4 }}>
                   Get in Touch
                 </div>
                 <p style={{ color: '#888', fontSize: 13, marginBottom: 24 }}>Tell us about your hostel</p>
@@ -194,7 +177,7 @@ const AboutSection: React.FC = () => {
                   <input name="ownerName" value={form.ownerName} onChange={handleChange} placeholder="Owner Name" required style={inputStyle} />
                   <button type="submit" style={{
                     padding: '14px', background: 'var(--teal)', color: '#fff', border: 'none',
-                    borderRadius: 8, fontFamily: "'Raleway', sans-serif", fontWeight: 700,
+                    borderRadius: 8, fontFamily: "'General Sans', sans-serif", fontWeight: 700,
                     fontSize: 15, cursor: 'pointer', marginTop: 6, transition: 'background .2s'
                   }}>
                     Submit

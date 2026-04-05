@@ -22,7 +22,7 @@ const PainPointsSection: React.FC = () => {
   }, []);
 
   return (
-    <section style={{ background: '#fff', padding: '90px 60px' }}>
+    <section style={{ background: '#fff', padding: '90px 40px' }}>
       <div ref={headerRef} className="reveal" style={{ textAlign: 'center', maxWidth: 580, margin: '0 auto 52px' }}>
         <div className="sec-label">/ Pain Points Solved</div>
         <div className="sec-eyebrow">The real problems</div>
@@ -48,7 +48,7 @@ const PainPointsSection: React.FC = () => {
               background: 'linear-gradient(to top,rgba(26,60,94,.88) 0%,rgba(26,60,94,.15) 60%,transparent 100%)',
             }} />
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '24px 20px' }}>
-              <div style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 14, color: '#fff', marginBottom: 6 }}>{card.title}</div>
+              <div style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 700, fontSize: 14, color: '#fff', marginBottom: 6 }}>{card.title}</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,.78)', lineHeight: 1.65 }}>{card.desc}</div>
             </div>
           </div>

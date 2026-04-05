@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer: React.FC = () => (
-  <footer style={{ background: '#000', padding: '40px 40px 0', fontFamily: "'DM Sans', sans-serif", overflow: 'hidden' }}>
+  <footer style={{ background: '#000', padding: '40px 40px 0', fontFamily: "'General Sans', sans-serif", overflow: 'hidden' }}>
     <div className="footer-row" style={{
       border: '1px solid rgba(60,193,162,0.25)', borderRadius: 16,
       padding: '18px 36px', display: 'flex', alignItems: 'center',
@@ -52,7 +52,7 @@ const Footer: React.FC = () => (
 
     <div className="footer-big-text" style={{
       textAlign: 'center', lineHeight: 0.85, pointerEvents: 'none', userSelect: 'none',
-      fontFamily: "'Syne', sans-serif", fontWeight: 800,
+      fontFamily: "'Satoshi', sans-serif", fontWeight: 800,
       fontSize: 'clamp(80px, 16vw, 180px)',
       color: '#d1d5db',
       textShadow: '0 4px 20px rgba(60,193,162,0.5), 0 2px 8px rgba(60,193,162,0.3)'

@@ -26,7 +26,7 @@ const IconStrip: React.FC = () => (
             {item.icon}
           </div>
           <div>
-            <div style={{ fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 15, color: 'var(--blue)', marginBottom: 3 }}>{item.title}</div>
+            <div style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 700, fontSize: 15, color: 'var(--blue)', marginBottom: 3 }}>{item.title}</div>
             <div style={{ fontSize: 12, color: 'var(--muted)' }}>{item.sub}</div>
           </div>
         </div>

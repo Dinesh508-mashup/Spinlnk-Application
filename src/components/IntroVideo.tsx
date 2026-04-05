@@ -48,7 +48,7 @@ const IntroVideo: React.FC<Props> = ({ onEnd }) => {
           background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(6px)',
           color: '#fff', border: '1px solid rgba(255,255,255,0.3)',
           padding: '10px 20px', borderRadius: 30,
-          fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 18,
+          fontFamily: "'Satoshi', sans-serif", fontWeight: 700, fontSize: 18,
           cursor: 'pointer', transition: 'background .2s',
         }}
         onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.3)')}
@@ -65,7 +65,7 @@ const IntroVideo: React.FC<Props> = ({ onEnd }) => {
           background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(6px)',
           color: '#fff', border: '1px solid rgba(255,255,255,0.3)',
           padding: '10px 28px', borderRadius: 30,
-          fontFamily: "'Raleway', sans-serif", fontWeight: 700, fontSize: 14,
+          fontFamily: "'Satoshi', sans-serif", fontWeight: 700, fontSize: 14,
           cursor: 'pointer', letterSpacing: 0.5, transition: 'background .2s',
         }}
         onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.3)')}
