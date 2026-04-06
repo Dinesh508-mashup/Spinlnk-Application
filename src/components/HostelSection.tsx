@@ -72,7 +72,7 @@ const CounterStrip: React.FC = () => {
 
   return (
     <div ref={stripRef} className="counter-strip" style={{
-      display: 'flex', gap: 48, marginTop: 30, justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap', width: '100%', maxWidth: 900, margin: '30px auto 0'
+      display: 'flex', gap: 48, justifyContent: 'center', alignItems: 'flex-start', width: '100%', margin: '30px auto 0'
     }}>
       <CircleCounter value={Math.floor(progress * 3)} max={3} label="Hostels" progress={progress} />
       <CircleCounter value={Math.floor(progress * totalMachines)} max={totalMachines} label="Washing Machines Integrated" progress={progress} />

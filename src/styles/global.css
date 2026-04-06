@@ -91,7 +91,7 @@ nav.nav-hidden{transform:translateY(-100%);}
   .pain-card{height:220px !important;}
 
   /* COUNTER STRIP */
-  .counter-strip{display:grid !important;grid-template-columns:1fr 1fr !important;gap:32px 24px !important;justify-items:center !important;max-width:400px !important;margin:30px auto 0 !important;}
+  .counter-strip{flex-wrap:wrap !important;gap:28px 32px !important;max-width:400px !important;}
 
   /* HOSTEL MAP */
   .hostel-map{height:350px !important;}
@@ -118,5 +118,5 @@ nav.nav-hidden{transform:translateY(-100%);}
   .pain-card{height:260px !important;}
   .hostel-map{height:280px !important;}
   .footer-big-text{font-size:clamp(44px,12vw,90px) !important;}
-  .counter-strip{gap:24px 16px !important;max-width:320px !important;}
+  .counter-strip{gap:20px 24px !important;max-width:300px !important;}
 }
