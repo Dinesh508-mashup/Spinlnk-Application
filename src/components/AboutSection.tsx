@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const checkItems = [
   'Know exactly when a machine is free — from your room',
@@ -7,26 +7,7 @@ const checkItems = [
   'Rain alerts so outdoor laundry is never ruined',
 ];
 
-const inputStyle: React.CSSProperties = {
-  width: '100%', padding: '12px 16px', border: '1.5px solid #dde4ee',
-  borderRadius: 8, fontSize: 14, fontFamily: "'General Sans', sans-serif",
-  outline: 'none', transition: 'border-color .2s',
-};
-
 const AboutSection: React.FC = () => {
-  const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({ hostelName: '', location: '', rooms: '', contact: '', ownerName: '' });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => { setShowForm(false); setSubmitted(false); setForm({ hostelName: '', location: '', rooms: '', contact: '', ownerName: '' }); }, 2000);
-  };
 
   return (
     <section id="about" style={{ background: '#fff', overflow: 'hidden' }}>
@@ -91,103 +72,22 @@ const AboutSection: React.FC = () => {
         </div>
         <div className="about-buttons" style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
           <a href="#features" className="btn-outline">See How It Works →</a>
-          <button
-            onClick={() => setShowForm(true)}
+          <a
+            href="https://forms.gle/1XdS5iLRrxxMgvGJ7"
+            target="_blank"
+            rel="noreferrer"
             style={{
               padding: '12px 30px', background: 'var(--teal)', color: '#fff',
               border: 'none', borderRadius: 4, fontFamily: "'General Sans', sans-serif",
               fontWeight: 700, fontSize: 13, letterSpacing: .5, cursor: 'pointer',
-              transition: 'background .25s'
+              transition: 'background .25s', textDecoration: 'none', display: 'inline-block'
             }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#2f9e99')}
-            onMouseLeave={e => (e.currentTarget.style.background = '#3ab5b0')}
           >
             Contact Us
-          </button>
+          </a>
         </div>
       </div>
 
-      {/* Contact Form Popup */}
-      {showForm && (
-        <div
-          onClick={(e) => { if (e.target === e.currentTarget) setShowForm(false); }}
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)',
-            backdropFilter: 'blur(4px)', zIndex: 2000, display: 'flex',
-            alignItems: 'center', justifyContent: 'center', padding: 16
-          }}
-        >
-          <div className="contact-modal" style={{
-            background: '#fff', borderRadius: 20, padding: '36px 32px',
-            width: '100%', maxWidth: 460, position: 'relative',
-            animation: 'modalIn .25s ease'
-          }}>
-            <style>{`@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.97);}to{opacity:1;transform:translateY(0) scale(1);}}`}</style>
-            <button
-              onClick={() => setShowForm(false)}
-              style={{ position: 'absolute', top: 16, right: 20, background: 'none', border: 'none', fontSize: 22, color: '#aaa', cursor: 'pointer', lineHeight: 1 }}
-            >×</button>
-
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
-                <div style={{ fontFamily: "'General Sans', sans-serif", fontWeight: 700, fontSize: 20, color: 'var(--blue)' }}>
-                  Thank you!
-                </div>
-                <p style={{ color: '#777', fontSize: 14, marginTop: 8 }}>We'll get back to you soon.</p>
-              </div>
-            ) : (
-              <>
-                <div style={{ fontFamily: "'Satoshi', sans-serif", fontSize: 24, fontWeight: 700, color: 'var(--blue)', marginBottom: 4 }}>
-                  Get in Touch
-                </div>
-                <p style={{ color: '#888', fontSize: 13, marginBottom: 24 }}>Tell us about your hostel</p>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  <input name="hostelName" value={form.hostelName} onChange={handleChange} placeholder="Hostel Name" required style={inputStyle} />
-                  <select name="location" value={form.location} onChange={handleChange as unknown as React.ChangeEventHandler<HTMLSelectElement>} required style={{ ...inputStyle, color: form.location ? '#333' : '#999', appearance: 'none', backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\' viewBox=\'0 0 12 8\'%3E%3Cpath d=\'M1 1l5 5 5-5\' stroke=\'%23999\' stroke-width=\'1.5\' fill=\'none\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}>
-                    <option value="" disabled>Select City</option>
-                    <option value="Hyderabad">Hyderabad</option>
-                    <option value="Bangalore">Bangalore</option>
-                    <option value="Mumbai">Mumbai</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Chennai">Chennai</option>
-                    <option value="Pune">Pune</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Ahmedabad">Ahmedabad</option>
-                    <option value="Jaipur">Jaipur</option>
-                    <option value="Lucknow">Lucknow</option>
-                    <option value="Chandigarh">Chandigarh</option>
-                    <option value="Indore">Indore</option>
-                    <option value="Kochi">Kochi</option>
-                    <option value="Coimbatore">Coimbatore</option>
-                    <option value="Visakhapatnam">Visakhapatnam</option>
-                    <option value="Nagpur">Nagpur</option>
-                    <option value="Bhopal">Bhopal</option>
-                    <option value="Mysore">Mysore</option>
-                    <option value="Goa">Goa</option>
-                    <option value="Dehradun">Dehradun</option>
-                    <option value="Varanasi">Varanasi</option>
-                    <option value="Mangalore">Mangalore</option>
-                    <option value="Vijayawada">Vijayawada</option>
-                    <option value="Tirupati">Tirupati</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <input name="rooms" value={form.rooms} onChange={handleChange} placeholder="No. of Rooms" type="number" required style={inputStyle} />
-                  <input name="contact" value={form.contact} onChange={handleChange} placeholder="Contact Number" type="tel" required style={inputStyle} />
-                  <input name="ownerName" value={form.ownerName} onChange={handleChange} placeholder="Owner Name" required style={inputStyle} />
-                  <button type="submit" style={{
-                    padding: '14px', background: 'var(--teal)', color: '#fff', border: 'none',
-                    borderRadius: 8, fontFamily: "'General Sans', sans-serif", fontWeight: 700,
-                    fontSize: 15, cursor: 'pointer', marginTop: 6, transition: 'background .2s'
-                  }}>
-                    Submit
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </section>
   );
 };
